@@ -1,73 +1,341 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>German Learning Hub</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            background:#f5f5f5;
-            text-align:center;
-            padding:20px;
-        }
-
-        h1{
-            color:#333;
-        }
-
-        .container{
-            max-width:700px;
-            margin:auto;
-        }
-
-        .card{
-            display:block;
-            background:white;
-            padding:20px;
-            margin:15px;
-            border-radius:15px;
-            text-decoration:none;
-            color:black;
-            font-size:20px;
-            font-weight:bold;
-            box-shadow:0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .card:hover{
-            background:#e8f0ff;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>German A1 Masterclass - Goethe Certification Course</title>
+  <meta name="description" content="A comprehensive, interactive course designed to help you master German A1, learn vocabulary, pronunciation, grammar, articles, and pass the Goethe-Zertifikat A1 exam.">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div class="container">
-
-    <h1>🇩🇪 German Learning Hub</h1>
-
-    <p>Select a lesson:</p>
-
-    <a class="card" href="goethe_a1_article_quiz__1.html">
-        Article Quiz
-    </a>
-
-    <a class="card" href="goethe_a1_article_quiz_3.html">
-        Article Quiz Advanced
-    </a>
-
-    <a class="card" href="german_a1_cheatsheet__2.html">
-        A1 Cheatsheet
-    </a>
-
-    <a class="card" href="goethe_a1_grammar_app__4.html">
-        Grammar Trainer
-    </a>
-
-    <a class="card" href="sprechpruefung-trainer__5.html">
-        Speaking Trainer
-    </a>
-
-</div>
-
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">DE</div>
+        <h1 class="brand-name" id="main-heading">Deutsch A1</h1>
+      </div>
+      
+      <nav class="nav-menu">
+        <li class="nav-item">
+          <a class="nav-link active" id="nav-dashboard" onclick="switchView('dashboard')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+            Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-lessons" onclick="switchView('lessons')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-16.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-16.25v16.25" />
+            </svg>
+            Interactive Lessons
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-vocab" onclick="switchView('vocab')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0120.25 6v12A2.25 2.25 0 0118 20.25H6A2.25 2.25 0 013.75 18V6A2.25 2.25 0 016 3.75h1.5m9 0h-9" />
+            </svg>
+            Vocab Hub (Trainer)
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-game" onclick="switchView('game')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21m0 0l-.813-5.096M9 21h3.375c.621 0 1.125-.504 1.125-1.125V18" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+            Noun Articles Game
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-exam" onclick="switchView('exam')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.375M9 18h3.375m-6.75-6h.008v.008H5.25V12zm0 3h.008v.008H5.25V15zm0 3h.008v.008H5.25V18zm3-9.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H19.5a1.5 1.5 0 011.5 1.5v12a1.5 1.5 0 01-1.5 1.5H8.25a1.5 1.5 0 01-1.5-1.5V10.5A1.5 1.5 0 018.25 9h6.75z" />
+            </svg>
+            Mock Goethe A1 Exam
+          </a>
+        </li>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-progress-card">
+          <div class="user-progress-label">
+            <span>Overall Course Progress</span>
+            <span id="overall-progress-text">0%</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="overall-progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Main Content Workspace -->
+    <main class="main-content">
+      
+      <!-- Top Action Bar -->
+      <header class="top-bar">
+        <div class="badge-group">
+          <span class="level-badge">Goethe A1 Prep</span>
+          <span class="score-badge" id="xp-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color: var(--color-warning);">
+              <path d="M11.48 3.499c.195-.39.645-.39.84 0l2.373 4.747 5.258.761c.433.062.605.589.293.896l-3.805 3.708.898 5.234c.074.434-.38.764-.766.559L12 16.946l-4.707 2.458c-.386.205-.84-.125-.766-.559l.898-5.234-3.805-3.708c-.312-.307-.14-.834.293-.896l5.258-.761 2.373-4.747z" />
+            </svg>
+            <span id="total-xp">0</span> XP
+          </span>
+          <span class="score-badge" id="streak-badge" style="color: #fb923c; background: rgba(251, 146, 60, 0.1); border-color: rgba(251, 146, 60, 0.25);">
+            🔥 <span id="streak-count">1</span> Day Streak
+          </span>
+        </div>
+      </header>
+      
+      <!-- Dashboard Home View -->
+      <section class="view-pane active" id="view-dashboard">
+        <div class="welcome-banner">
+          <h2>Willkommen zur Deutsch A1!</h2>
+          <p>This course covers spelling, articles, sentence cases, essential vocabulary, and everyday dialogues to help you ace your Goethe-Zertifikat A1 exam.</p>
+        </div>
+        
+        <div class="dashboard-grid">
+          <!-- Left Main - Modules -->
+          <div class="modules-section">
+            <h3 style="margin-bottom: 1.5rem;">Learning Modules</h3>
+            <div class="modules-container" id="modules-list">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+          
+          <!-- Right Sidebar - Stats & Badges -->
+          <aside class="stats-sidebar">
+            <div class="glass-card">
+              <h3 class="glass-card-title">Study Statistics</h3>
+              <div class="stat-widget">
+                <div class="stat-icon streak">🔥</div>
+                <div class="stat-details">
+                  <span class="stat-val" id="stats-streak">1</span>
+                  <span class="stat-lbl">Daily Streak</span>
+                </div>
+              </div>
+              <div class="stat-widget mt-4">
+                <div class="stat-icon xp">⭐</div>
+                <div class="stat-details">
+                  <span class="stat-val" id="stats-xp">0</span>
+                  <span class="stat-lbl">Total Experience Points</span>
+                </div>
+              </div>
+              <div class="stat-widget mt-4">
+                <div class="stat-icon vocab">📚</div>
+                <div class="stat-details">
+                  <span class="stat-val" id="stats-vocab-mastered">0 / 50</span>
+                  <span class="stat-lbl">Vocabulary Words Mastered</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="glass-card mt-4">
+              <h3 class="glass-card-title">Milestone Achievements</h3>
+              <div class="badges-showcase">
+                <div class="badge-item" id="badge-welcome">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                  <span>Anfänger</span>
+                </div>
+                <div class="badge-item" id="badge-vocab-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  <span>Wortmeister</span>
+                </div>
+                <div class="badge-item" id="badge-exam-ready">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  <span>Goethe Bereit</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+      
+      <!-- Interactive Lessons View -->
+      <section class="view-pane" id="view-lessons">
+        <div class="lesson-layout">
+          <!-- Lesson Left Nav -->
+          <nav class="lesson-navigation">
+            <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;" id="active-module-title">Module Lessons</h3>
+            <ul class="lesson-nav-list" id="lesson-links-list">
+              <!-- Dynamically populated via JS -->
+            </ul>
+          </nav>
+          
+          <!-- Lesson Center Viewport -->
+          <div class="lesson-content-area">
+            <article class="lesson-body" id="lesson-viewport">
+              <!-- Rendered Lesson content goes here -->
+            </article>
+            
+            <!-- Lesson Action Buttons -->
+            <footer class="lesson-footer">
+              <button class="btn-secondary" id="btn-prev-lesson" onclick="navigateLesson(-1)">Previous</button>
+              <button class="btn-primary" id="btn-module-quiz" onclick="startModuleQuiz()">Unlock Module Quiz</button>
+              <button class="btn-primary" id="btn-next-lesson" onclick="navigateLesson(1)">Next</button>
+            </footer>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Vocab Hub (Trainer) View -->
+      <section class="view-pane" id="view-vocab">
+        <h2 style="margin-bottom: 1.5rem;">A1 Vocabulary Hub</h2>
+        <div class="vocab-hub-layout">
+          <!-- Filter sidebar -->
+          <aside class="vocab-filters">
+            <span class="vocab-filter-heading">Category</span>
+            <button class="btn-filter active" onclick="filterVocab('all', this)">All Words</button>
+            <button class="btn-filter" onclick="filterVocab('Basics', this)">Basics / Greetings</button>
+            <button class="btn-filter" onclick="filterVocab('Objects', this)">Objects & Articles</button>
+            <button class="btn-filter" onclick="filterVocab('Time', this)">Time & Dates</button>
+            <button class="btn-filter" onclick="filterVocab('Food', this)">Food & Beverage</button>
+            <button class="btn-filter" onclick="filterVocab('Directions', this)">Directions & City</button>
+            <button class="btn-filter" onclick="filterVocab('Travel', this)">Travel / Hotels</button>
+            
+            <span class="vocab-filter-heading">Mastery Box</span>
+            <button class="btn-filter" onclick="filterVocab('review', this)">Needs Review</button>
+            <button class="btn-filter" onclick="filterVocab('mastered', this)">Mastered Words</button>
+          </aside>
+          
+          <!-- Flashcard Space -->
+          <div class="vocab-trainer-body">
+            <div class="flashcard-wrapper">
+              <div class="flashcard" id="vocab-card" onclick="flipFlashcard()">
+                <!-- Front Side -->
+                <div class="card-face card-front">
+                  <span class="card-category" id="card-front-cat">Category</span>
+                  <div class="card-word" id="card-front-word">Apfel</div>
+                  <div class="card-plural" id="card-front-plural">Plural: die Äpfel</div>
+                  <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 1rem;">(Click Card to Flip)</p>
+                </div>
+                <!-- Back Side -->
+                <div class="card-face card-back">
+                  <button class="speaker-btn" id="vocab-speak-btn" onclick="speakVocabWord(event)">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 24px; height: 24px;">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                    </svg>
+                  </button>
+                  <span class="card-meaning" id="card-back-meaning">apple</span>
+                  <div class="card-example-box">
+                    <div class="card-ex-de" id="card-back-ex-de">Der Apfel ist rot.</div>
+                    <div class="card-ex-en" id="card-back-ex-en">The apple is red.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="vocab-trainer-controls">
+              <button class="btn-vocab-rate review" onclick="rateVocabWord(false)">
+                ❌ Review Needed
+              </button>
+              <button class="btn-vocab-rate master" onclick="rateVocabWord(true)">
+                ✔ Mastered!
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Noun Articles Game View -->
+      <section class="view-pane" id="view-game">
+        <div class="game-container">
+          <div style="text-align: center;">
+            <h2>Der - Die - Das Game</h2>
+            <p style="color: var(--text-muted);">Assign the correct definite article to the noun displayed!</p>
+          </div>
+          
+          <div class="game-score-board">
+            <span>Score: <strong id="game-score" style="color: var(--accent-primary);">0</strong></span>
+            <span>Current Streak: 🔥 <strong id="game-streak" style="color: #fb923c;">0</strong></span>
+            <span>Best Streak: 👑 <strong id="game-best-streak" style="color: var(--color-warning);">0</strong></span>
+          </div>
+          
+          <div class="game-board" id="game-card">
+            <span class="game-word" id="game-current-word">Katze</span>
+            <div class="game-plural-hint" id="game-current-plural">Plural: die Katzen</div>
+            
+            <div class="game-buttons">
+              <button class="btn-gender der" onclick="submitGender('der')">der (Masc)</button>
+              <button class="btn-gender die" onclick="submitGender('die')">die (Fem)</button>
+              <button class="btn-gender das" onclick="submitGender('das')">das (Neut)</button>
+            </div>
+          </div>
+          <button class="btn-secondary" onclick="skipGameWord()">Skip Word</button>
+        </div>
+      </section>
+      
+      <!-- Mock Goethe A1 Exam View -->
+      <section class="view-pane" id="view-exam">
+        <!-- Start screen -->
+        <div class="glass-card" id="exam-start-panel" style="max-width: 700px; margin: 0 auto; padding: 3rem; text-align: center;">
+          <h2 style="font-size: 2rem; margin-bottom: 1rem;">Goethe-Zertifikat A1 Mock Exam</h2>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">
+            This mock exam replicates the exact style and format of the Goethe Start Deutsch A1 certification. 
+            It contains listening comprehension, reading passages, and writing guides.
+          </p>
+          <div class="accent-box" style="text-align: left; font-size: 0.9rem;">
+            <p><strong>Rules of the Mock Test:</strong></p>
+            <ul>
+              <li><strong>Time limit:</strong> 65 Minutes.</li>
+              <li><strong>Passing threshold:</strong> 60 points out of 100 (60%).</li>
+              <li><strong>Hören section:</strong> Click the speaker icon to play the listening tracks using speech synthesis. Try to listen only once or twice!</li>
+            </ul>
+          </div>
+          <button class="btn-primary mt-4" id="btn-start-exam" onclick="startMockExam()">Start Mock Exam</button>
+        </div>
+        
+        <!-- Exam Layout -->
+        <div class="exam-layout" id="exam-layout-panel" style="display: none;">
+          <!-- Left nav (sections & timer) -->
+          <aside class="exam-nav">
+            <div class="exam-timer" id="exam-timer-display">65:00</div>
+            <ul class="exam-nav-list">
+              <li class="exam-nav-item active" id="exam-nav-hoeren" onclick="switchExamSection('hoeren')">
+                <span>🎧</span> Hören (Listening)
+              </li>
+              <li class="exam-nav-item" id="exam-nav-lesen" onclick="switchExamSection('lesen')">
+                <span>📖</span> Lesen (Reading)
+              </li>
+              <li class="exam-nav-item" id="exam-nav-schreiben" onclick="switchExamSection('schreiben')">
+                <span>✍</span> Schreiben (Writing)
+              </li>
+              <li class="exam-nav-item" id="exam-nav-sprechen" onclick="switchExamSection('sprechen')">
+                <span>🗣</span> Sprechen Prep
+              </li>
+            </ul>
+            <button class="exam-submit-btn mt-5" onclick="submitMockExam()">Finish Exam</button>
+          </aside>
+          
+          <!-- Right Workspace -->
+          <div class="exam-workspace" id="exam-questions-container">
+            <!-- Questions dynamically generated here -->
+          </div>
+        </div>
+        
+        <!-- Result Screen -->
+        <div class="glass-card" id="exam-result-panel" style="display: none; max-width: 600px; margin: 0 auto;">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </section>
+      
+    </main>
+  </div>
+  
+  <!-- Curriculum data & scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
